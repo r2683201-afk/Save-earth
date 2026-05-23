@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Nature Conservation - Save Nature, Save Future. Join our mission to protect forests, rivers, mountains and wildlife through sustainable action." />
+<meta name="keywords" content="nature conservation, environment, save earth, tree plantation, climate action, sustainability" />
+<title>VerdantEarth — Nature Conservation</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-400-normal.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-600-normal.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-800-normal.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/playfair-display@latest/latin-700-normal.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/fontsource/fonts/playfair-display@latest/latin-800-normal.css" />
+<style>
+  /* ===================== RESET & BASE ===================== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  :root {
+    --primary: #0f8a5f;
+    --primary-dark: #0a6b49;
+    --secondary: #0ea5b7;
+    --accent: #84cc16;
+    --bg: #f4faf6;
+    --bg-alt: #e9f5ee;
+    --surface: rgba(255,255,255,0.65);
+    --surface-solid: #ffffff;
+    --text: #0b2a22;
+    --text-soft: #2d5549;
+    --muted: #5a7d70;
+    --border: rgba(15,138,95,0.15);
+    --shadow-sm: 0 4px 14px rgba(15,138,95,0.08);
+    --shadow-md: 0 12px 30px rgba(15,138,95,0.12);
+    --shadow-lg: 0 24px 60px rgba(15,138,95,0.18);
+    --grad: linear-gradient(135deg, #0f8a5f 0%, #0ea5b7 100%);
+    --grad-soft: linear-gradient(135deg, rgba(15,138,95,0.08), rgba(14,165,183,0.08));
+    --radius: 18px;
+    --radius-sm: 10px;
+  }
+  [data-theme="dark"] {
+    --bg: #06171a;
+    --bg-alt: #0a2329;
+    --surface: rgba(16,44,50,0.55);
+    --surface-solid: #0e2a31;
+    --text: #e7f5ef;
+    --text-soft: #bcd6cc;
+    --muted: #8fb4a7;
+    --border: rgba(132,204,22,0.18);
+    --shadow-sm: 0 4px 14px rgba(0,0,0,0.35);
+    --shadow-md: 0 12px 30px rgba(0,0,0,0.45);
+    --shadow-lg: 0 24px 60px rgba(0,0,0,0.55);
+    --grad: linear-gradient(135deg, #22c55e 0%, #06b6d4 100%);
+    --grad-soft: linear-gradient(135deg, rgba(34,197,94,0.1), rgba(6,182,212,0.1));
+  }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    overflow-x: hidden;
+    transition: background 0.4s ease, color 0.4s ease;
+  }
+  img { max-width: 100%; display: block; height: auto; }
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+  h1, h2, h3, h4 { font-family: 'Playfair Display', Georgia, serif; line-height: 1.15; color: var(--text); }
+  .container { width: min(1200px, 92%); margin-inline: auto; }
+  section { padding: clamp(60px, 8vw, 110px) 0; position: relative; }
+  .section-head { text-align: center; max-width: 720px; margin: 0 auto 60px; }
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background: var(--grad);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 14px;
+  }
+  .section-head h2 {
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 800;
+    margin-bottom: 18px;
+  }
+  .section-head p { color: var(--text-soft); font-size: 1.05rem; }
+
+  /* ===================== NAV ===================== */
+  .nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 18px 0;
+    transition: all 0.35s ease;
+    backdrop-filter: blur(0px);
+  }
+  .nav.scrolled {
+    background: var(--surface);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 0;
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .logo {
+    display: flex; align-items: center; gap: 10px;
+    font-family: 'Playfair Display', serif;
+    font-weight: 800; font-size: 1.35rem;
+  }
+  .logo-mark {
+    width: 38px; height: 38px; border-radius: 12px;
+    background: var(--grad);
+    display: grid; place-items: center;
+    color: white; box-shadow: var(--shadow-sm);
+  }
+  .nav-links {
+    display: flex; gap: 28px; list-style: none; align-items: center;
+  }
+  .nav-links a {
+    font-size: 0.95rem; font-weight: 500; position: relative;
+    transition: color 0.25s;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute; left: 0; bottom: -6px;
+    width: 0; height: 2px; background: var(--grad);
+    transition: width 0.3s ease;
+  }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-actions { display: flex; align-items: center; gap: 10px; }
+  .icon-btn {
+    width: 42px; height: 42px; border-radius: 12px;
+    display: grid; place-items: center;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    transition: all 0.25s ease;
+  }
+  .icon-btn:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+  .menu-toggle { display: none; }
+  @media (max-width: 900px) {
+    .nav-links {
+      position: fixed; top: 72px; left: 4%; right: 4%;
+      flex-direction: column; align-items: stretch;
+      background: var(--surface-solid);
+      border-radius: var(--radius);
+      padding: 24px;
+      gap: 6px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      transform: translateY(-15px); opacity: 0; pointer-events: none;
+      transition: all 0.3s ease;
+    }
+    .nav-links.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+    .nav-links a { padding: 12px 8px; border-radius: var(--radius-sm); }
+    .nav-links a:hover { background: var(--grad-soft); }
+    .menu-toggle { display: grid; }
+  }
+
+  /* ===================== HERO ===================== */
+  .hero {
+    min-height: 100vh;
+    display: grid; place-items: center;
+    position: relative; overflow: hidden;
+    padding: 120px 0 80px;
+    color: white;
+  }
+  .hero-bg {
+    position: absolute; inset: 0; z-index: -2;
+    background-image: url('https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1a8bc3c4a-54b4-4b87-a86a-55191d95cc53.png');
+    background-size: cover; background-position: center;
+    animation: slowZoom 25s ease-in-out infinite alternate;
+  }
+  @keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.08); } }
+  .hero::before {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(135deg, rgba(6,23,26,0.75), rgba(15,138,95,0.55));
+  }
+  .hero-content { text-align: center; max-width: 860px; padding: 0 20px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 18px; border-radius: 999px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.2);
+    font-size: 0.85rem; font-weight: 500;
+    margin-bottom: 24px;
+    animation: fadeUp 0.9s ease 0.1s backwards;
+  }
+  .hero h1 {
+    font-size: clamp(2.6rem, 7vw, 5.5rem);
+    font-weight: 800; color: white;
+    margin-bottom: 22px;
+    text-shadow: 0 4px 40px rgba(0,0,0,0.35);
+    animation: fadeUp 1s ease 0.25s backwards;
+  }
+  .hero h1 .accent {
+    background: linear-gradient(135deg, #84cc16, #22d3ee);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .hero p {
+    font-size: clamp(1rem, 1.6vw, 1.2rem);
+    color: rgba(255,255,255,0.92);
+    margin-bottom: 40px;
+    animation: fadeUp 1s ease 0.45s backwards;
+  }
+  .hero-cta {
+    display: flex; flex-wrap: wrap; gap: 14px; justify-content: center;
+    animation: fadeUp 1s ease 0.6s backwards;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 15px 32px; border-radius: 999px;
+    font-weight: 600; font-size: 0.98rem;
+    transition: all 0.3s ease;
+    position: relative; overflow: hidden;
+  }
+  .btn-primary {
+    background: var(--grad);
+    color: white;
+    box-shadow: 0 10px 30px rgba(15,138,95,0.45);
+  }
+  .btn-primary::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, #22d3ee, #84cc16);
+    opacity: 0; transition: opacity 0.4s ease;
+  }
+  .btn-primary span { position: relative; z-index: 1; display: inline-flex; align-items: center; gap: 10px; }
+  .btn-primary:hover::before { opacity: 1; }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(15,138,95,0.55); }
+  .btn-ghost {
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: white;
+  }
+  .btn-ghost:hover { background: rgba(255,255,255,0.22); transform: translateY(-3px); }
+  .hero-scroll {
+    position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+    color: rgba(255,255,255,0.85); font-size: 0.8rem;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    animation: bounce 2.2s ease-in-out infinite;
+  }
+  @keyframes bounce { 0%,100% { transform: translate(-50%,0); } 50% { transform: translate(-50%,-10px); } }
+
+  /* ===================== ABOUT ===================== */
+  .about-grid {
+    display: grid; gap: 28px;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  }
+  .about-card {
+    background: var(--surface);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: var(--shadow-sm);
+  }
+  .about-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+  .about-card .img-wrap {
+    height: 220px; overflow: hidden;
+  }
+  .about-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s ease; }
+  .about-card:hover img { transform: scale(1.1); }
+  .about-card-body { padding: 26px; }
+  .about-card h3 { font-size: 1.4rem; margin-bottom: 10px; }
+  .about-card p { color: var(--text-soft); font-size: 0.95rem; }
+  .about-card .icon-chip {
+    width: 46px; height: 46px; border-radius: 14px;
+    background: var(--grad); color: white;
+    display: grid; place-items: center; margin-bottom: 16px;
+  }
+
+  /* ===================== PROBLEMS ===================== */
+  .problems {
+    background: var(--bg-alt);
+    position: relative;
+  }
+  .problems-grid {
+    display: grid; gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  }
+  .problem-card {
+    position: relative; border-radius: var(--radius);
+    overflow: hidden; min-height: 280px;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 24px; color: white;
+    box-shadow: var(--shadow-md);
+    transition: transform 0.4s ease;
+  }
+  .problem-card:hover { transform: translateY(-6px); }
+  .problem-card img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; z-index: -2;
+    transition: transform 0.8s ease;
+  }
+  .problem-card:hover img { transform: scale(1.12); }
+  .problem-card::before {
+    content: ''; position: absolute; inset: 0; z-index: -1;
+    background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.05) 100%);
+  }
+  .problem-card h3 { color: white; font-size: 1.35rem; margin-bottom: 6px; }
+  .problem-card p { font-size: 0.9rem; color: rgba(255,255,255,0.88); }
+
+  /* ===================== GALLERY ===================== */
+  .gallery {
+    columns: 3; column-gap: 18px;
+  }
+  @media (max-width: 900px) { .gallery { columns: 2; } }
+  @media (max-width: 540px) { .gallery { columns: 1; } }
+  .gallery-item {
+    break-inside: avoid;
+    margin-bottom: 18px;
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  }
+  .gallery-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+  .gallery-item img {
+    width: 100%; height: auto;
+    transition: transform 0.7s ease, filter 0.4s ease;
+  }
+  .gallery-item:hover img { transform: scale(1.08); filter: brightness(0.75); }
+  .gallery-item .overlay {
+    position: absolute; inset: 0;
+    display: flex; align-items: flex-end;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(6,23,26,0.9), transparent 55%);
+    opacity: 0; transition: opacity 0.4s ease;
+  }
+  .gallery-item:hover .overlay { opacity: 1; }
+  .gallery-item .overlay span {
+    color: white; font-weight: 600; font-size: 0.95rem;
+    transform: translateY(10px); transition: transform 0.4s ease;
+  }
+  .gallery-item:hover .overlay span { transform: translateY(0); }
+
+  /* ===================== SOLUTIONS ===================== */
+  .solutions-grid {
+    display: grid; gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  }
+  .solution-card {
+    background: var(--surface);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px 26px;
+    transition: all 0.4s ease;
+    position: relative; overflow: hidden;
+  }
+  .solution-card::before {
+    content: ''; position: absolute; top: -50%; right: -50%;
+    width: 200px; height: 200px; border-radius: 50%;
+    background: var(--grad-soft);
+    transition: transform 0.6s ease;
+  }
+  .solution-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+  .solution-card:hover::before { transform: scale(1.6); }
+  .solution-card .s-img {
+    width: 100%; height: 160px; border-radius: var(--radius-sm);
+    object-fit: cover; margin-bottom: 20px;
+    transition: transform 0.5s ease;
+  }
+  .solution-card:hover .s-img { transform: scale(1.03); }
+  .solution-card h3 { font-size: 1.3rem; margin-bottom: 10px; position: relative; }
+  .solution-card p { color: var(--text-soft); font-size: 0.93rem; position: relative; }
+  .solution-num {
+    position: absolute; top: 20px; right: 22px;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem; font-weight: 800;
+    background: var(--grad); -webkit-background-clip: text;
+    background-clip: text; color: transparent; opacity: 0.55;
+  }
+
+  /* ===================== STATS ===================== */
+  .stats {
+    background: var(--grad);
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+  .stats::before {
+    content: ''; position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 15% 30%, rgba(255,255,255,0.12) 0, transparent 40%),
+      radial-gradient(circle at 85% 70%, rgba(255,255,255,0.1) 0, transparent 40%);
+  }
+  .stats-grid {
+    display: grid; gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    text-align: center;
+    position: relative;
+  }
+  .stat-item .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800; color: white;
+    display: block;
+  }
+  .stat-item .stat-suffix { font-size: 0.75em; }
+  .stat-item p { color: rgba(255,255,255,0.9); font-weight: 500; margin-top: 6px; }
+  .stats .section-head h2 { color: white; }
+  .stats .section-head p { color: rgba(255,255,255,0.85); }
+  .stats .eyebrow { background: linear-gradient(135deg, #fff, #a7f3d0); -webkit-background-clip: text; background-clip: text; }
+
+  /* ===================== TAKE ACTION ===================== */
+  .action-grid {
+    display: grid; gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  }
+  .action-card {
+    background: var(--surface);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    transition: all 0.35s ease;
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .action-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--primary); }
+  .action-icon {
+    flex-shrink: 0;
+    width: 50px; height: 50px; border-radius: 14px;
+    background: var(--grad); color: white;
+    display: grid; place-items: center;
+  }
+  .action-card h4 { font-size: 1.1rem; margin-bottom: 6px; font-family: 'Inter', sans-serif; font-weight: 700; }
+  .action-card p { font-size: 0.88rem; color: var(--text-soft); }
+
+  /* ===================== TESTIMONIALS ===================== */
+  .testimonials { background: var(--bg-alt); }
+  .testi-grid {
+    display: grid; gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  .testi-card {
+    background: var(--surface);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 30px;
+    position: relative;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+  }
+  .testi-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+  .testi-card .quote-mark {
+    position: absolute; top: 18px; right: 22px;
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem; line-height: 1;
+    background: var(--grad); -webkit-background-clip: text; background-clip: text; color: transparent;
+    opacity: 0.2;
+  }
+  .testi-card p { color: var(--text-soft); font-style: italic; margin-bottom: 20px; position: relative; }
+  .testi-author { display: flex; align-items: center; gap: 14px; }
+  .testi-avatar {
+    width: 50px; height: 50px; border-radius: 50%;
+    background: var(--grad); color: white;
+    display: grid; place-items: center; font-weight: 700;
+  }
+  .testi-author h4 { font-family: 'Inter', sans-serif; font-weight: 700; font-size: 1rem; margin: 0; }
+  .testi-author span { font-size: 0.85rem; color: var(--muted); }
+
+  /* ===================== FAQ ===================== */
+  .faq-wrap { max-width: 820px; margin: 0 auto; }
+  .faq-item {
+    background: var(--surface);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    margin-bottom: 14px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+  }
+  .faq-item.open { box-shadow: var(--shadow-md); }
+  .faq-q {
+    width: 100%; text-align: left;
+    padding: 22px 26px;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    font-weight: 600; font-size: 1rem;
+  }
+  .faq-q .plus {
+    flex-shrink: 0;
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--grad); color: white;
+    display: grid; place-items: center;
+    transition: transform 0.35s ease;
+  }
+  .faq-item.open .plus { transform: rotate(45deg); }
+  .faq-a {
+    max-height: 0; overflow: hidden;
+    transition: max-height 0.45s ease;
+  }
+  .faq-a-inner {
+    padding: 0 26px 24px;
+    color: var(--text-soft);
+    line-height: 1.75;
+  }
+
+  /* ===================== CONTACT ===================== */
+  .contact {
+    background: var(--bg-alt);
+  }
+  .contact-grid {
+    display: grid; gap: 40px;
+    grid-template-columns: 1fr 1.2fr;
+  }
+  @media (max-width: 860px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-info h3 { font-size: 1.8rem; margin-bottom: 18px; }
+  .contact-info p { color: var(--text-soft); margin-bottom: 24px; }
+  .contact-item {
+    display: flex; gap: 16px; align-items: center;
+    margin-bottom: 18px;
+  }
+  .contact-item .ci-icon {
+    width: 46px; height: 46px; border-radius: 14px;
+    background: var(--grad-soft); color: var(--primary);
+    display: grid; place-items: center; flex-shrink: 0;
+    border: 1px solid var(--border);
+  }
+  .contact-item strong { display: block; font-size: 0.95rem; }
+  .contact-item span { color: var(--text-soft); font-size: 0.9rem; }
+  .contact-form {
+    background: var(--surface);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 34px;
+    box-shadow: var(--shadow-sm);
+  }
+  .form-row { display: grid; gap: 18px; grid-template-columns: 1fr 1fr; margin-bottom: 18px; }
+  @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
+  .field { display: flex; flex-direction: column; }
+  .field label { font-size: 0.85rem; font-weight: 600; margin-bottom: 8px; }
+  .field input, .field textarea {
+    width: 100%;
+    padding: 13px 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface-solid);
+    color: var(--text);
+    font-family: inherit; font-size: 0.95rem;
+    transition: all 0.25s ease;
+  }
+  .field input:focus, .field textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(15,138,95,0.12);
+  }
+  .field textarea { resize: vertical; min-height: 130px; }
+  .field.error input, .field.error textarea { border-color: #ef4444; }
+  .error-msg { color: #ef4444; font-size: 0.8rem; margin-top: 6px; min-height: 14px; }
+  .form-success {
+    background: var(--grad); color: white;
+    padding: 14px; border-radius: var(--radius-sm);
+    text-align: center; margin-top: 16px; font-weight: 500;
+    opacity: 0; transform: translateY(-8px);
+    transition: all 0.4s ease;
+  }
+  .form-success.show { opacity: 1; transform: translateY(0); }
+
+  /* ===================== FOOTER ===================== */
+  .footer {
+    background: var(--bg-alt);
+    padding: 70px 0 28px;
+    border-top: 1px solid var(--border);
+  }
+  .footer-grid {
+    display: grid; gap: 40px;
+    grid-template-columns: 1.4fr 1fr 1fr 1fr;
+    margin-bottom: 50px;
+  }
+  @media (max-width: 820px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 500px) { .footer-grid { grid-template-columns: 1fr; } }
+  .footer-col h5 { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 700; margin-bottom: 18px; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 10px; }
+  .footer-col a { color: var(--text-soft); font-size: 0.92rem; transition: color 0.25s; }
+  .footer-col a:hover { color: var(--primary); }
+  .footer-brand p { color: var(--text-soft); margin-top: 14px; font-size: 0.92rem; max-width: 340px; }
+  .socials { display: flex; gap: 10px; margin-top: 22px; }
+  .socials a {
+    width: 40px; height: 40px; border-radius: 12px;
+    display: grid; place-items: center;
+    background: var(--surface); border: 1px solid var(--border);
+    color: var(--text-soft);
+    transition: all 0.3s ease;
+  }
+  .socials a:hover { background: var(--grad); color: white; transform: translateY(-3px); border-color: transparent; }
+  .footer-bottom {
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  .footer-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: var(--text-soft);
+    font-size: 1.05rem;
+    margin-bottom: 14px;
+  }
+  .footer-copy { color: var(--muted); font-size: 0.85rem; }
+
+  /* ===================== BACK TO TOP ===================== */
+  .to-top {
+    position: fixed; bottom: 24px; right: 24px;
+    width: 48px; height: 48px; border-radius: 50%;
+    background: var(--grad); color: white;
+    display: grid; place-items: center;
+    box-shadow: var(--shadow-md);
+    opacity: 0; pointer-events: none; transform: translateY(10px);
+    transition: all 0.3s ease;
+    z-index: 90;
+  }
+  .to-top.show { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .to-top:hover { transform: translateY(-3px) scale(1.05); }
+
+  /* ===================== REVEAL ANIMATIONS ===================== */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal.delay-1 { transition-delay: 0.1s; }
+  .reveal.delay-2 { transition-delay: 0.2s; }
+  .reveal.delay-3 { transition-delay: 0.3s; }
+
+  /* ===================== LIGHTBOX ===================== */
+  .lightbox {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.92);
+    display: none; place-items: center;
+    z-index: 200; padding: 30px;
+  }
+  .lightbox.active { display: grid; animation: fadeIn 0.3s ease; }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  .lightbox img {
+    max-width: 92%; max-height: 90vh;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+  }
+  .lightbox-close {
+    position: absolute; top: 20px; right: 24px;
+    width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(255,255,255,0.12); color: white;
+    display: grid; place-items: center;
+    backdrop-filter: blur(10px);
+    font-size: 1.4rem;
+  }
+
+  /* Focus visible */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<header class="nav" id="nav">
+  <div class="container nav-inner">
+    <a href="#home" class="logo" aria-label="VerdantEarth home">
+      <span class="logo-mark" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.2 2.5c.5 3 .7 5 0 7s-2 4-4.2 4.5c0 2 1 3.5 2 4.5"/><path d="M2 21c0-3 1.85-4.1 3.13-5"/></svg>
+      </span>
+      VerdantEarth
+    </a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#problems">Issues</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#solutions">Solutions</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">
+        <svg id="themeIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg" role="img" aria-label="Misty forest background"></div>
+  <div class="hero-content">
+    <span class="hero-badge">🌱 Nature Conservation Initiative 2026</span>
+    <h1>Save Nature,<br><span class="accent">Save Future</span></h1>
+    <p>Every forest, river, and species matters. Join a global movement protecting the planet through sustainable action, community, and unwavering hope.</p>
+    <div class="hero-cta">
+      <a href="#solutions" class="btn btn-primary"><span>Take Action Now
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </span></a>
+      <a href="#about" class="btn btn-ghost">Learn More</a>
+    </div>
+  </div>
+  <a href="#about" class="hero-scroll" aria-label="Scroll down">
+    <span>Scroll</span>
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+  </a>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">About Nature</span>
+      <h2>The Living World We Must Protect</h2>
+      <p>Nature is the foundation of all life. Forests breathe, rivers flow, mountains stand — and together they sustain every living being on Earth.</p>
+    </div>
+    <div class="about-grid">
+      <article class="about-card reveal delay-1">
+        <div class="img-wrap"><img loading="lazy" src="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1a8bc3c4a-54b4-4b87-a86a-55191d95cc53.png" alt="Ancient forest with sun rays"/></div>
+        <div class="about-card-body">
+          <div class="icon-chip" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 20h5v-2a4 4 0 0 0-3-3.87M9 20H2v-2a4 4 0 0 1 3-3.87M12 4a4 4 0 0 0-4 4c0 2 1 3 2 4h4c1-1 2-2 2-4a4 4 0 0 0-4-4z"/><line x1="12" y1="12" x2="12" y2="20"/></svg></div>
+          <h3>Forests</h3>
+          <p>Forests cover 31% of the Earth and produce the oxygen we breathe. They are home to 80% of terrestrial biodiversity.</p>
+        </div>
+      </article>
+      <article class="about-card reveal delay-2">
+        <div class="img-wrap"><img loading="lazy" src="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1554553f9-7d22-475f-9397-d4fa21bd752d.png" alt="Crystal clear river flowing through valley"/></div>
+        <div class="about-card-body">
+          <div class="icon-chip" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg></div>
+          <h3>Rivers & Oceans</h3>
+          <p>Freshwater sustains civilizations. Oceans regulate climate, feed billions, and produce more than half the world's oxygen.</p>
+        </div>
+      </article>
+      <article class="about-card reveal delay-3">
+        <div class="img-wrap"><img loading="lazy" src="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1d679c852-f8af-41b4-ac92-0c69c06ebe31.png" alt="Majestic tiger in jungle"/></div>
+        <div class="about-card-body">
+          <div class="icon-chip" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c2-6 6-8 9-8s7 2 9 8c-2 6-6 8-9 8s-7-2-9-8z"/><circle cx="12" cy="12" r="2"/></svg></div>
+          <h3>Wildlife</h3>
+          <p>Every species plays a role in the ecosystem. Protecting wildlife means protecting the delicate balance of life itself.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEMS -->
+<section class="problems" id="problems">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Critical Issues</span>
+      <h2>Problems Facing Nature Today</h2>
+      <p>Human activity has pushed ecosystems to the brink. Understanding these challenges is the first step toward solving them.</p>
+    </div>
+    <div class="problems-grid">
+      <article class="problem-card reveal">
+        <img loading="lazy" src="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/14cce52ad-c1ae-4145-9169-e492d0eb4f37.png" alt="Deforestation"/>
+        <h3>Deforestation</h3>
+        <p>10 million hectares of forest lost each year.</p>
+      </article>
+      <article class="problem-card reveal delay-1">
+        <img loading="lazy" src="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1ebd10a89-3c3c-4908-bb65-a01ed3be5bd3.png" alt="Plastic pollution in ocean"/>
+        <h3>Plastic Pollution</h3>
+        <p>11 million tons of plastic enter oceans annually.</p>
+      </article>
+      <article class="problem-card reveal delay-2">
+        <img loading="lazy" src="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/10cfc7bcc-f943-4c51-9639-b3aa16da0a3e.png" alt="Air pollution"/>
+        <h3>Air Pollution</h3>
+        <p>9 out of 10 people breathe contaminated air.</p>
+      </article>
+      <article class="problem-card reveal delay-1">
+        <img loading="lazy" src="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1734fdf7f-6797-493e-bc15-6b659e99d424.png" alt="Melting glaciers"/>
+        <h3>Climate Change</h3>
+        <p>Global temperatures rose 1.2°C since pre-industrial times.</p>
+      </article>
+      <article class="problem-card reveal delay-2">
+        <img loading="lazy" src="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1062cd422-0dd6-49cc-a4ca-298201a8963a.png" alt="Water scarcity drought"/>
+        <h3>Water Scarcity</h3>
+        <p>2 billion people lack safe drinking water access.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Image Gallery</span>
+      <h2>Beauty of Our Living Planet</h2>
+      <p>A visual journey through the breathtaking landscapes and wildlife that make Earth extraordinary.</p>
+    </div>
+    <div class="gallery reveal">
+      <div class="gallery-item" data-img="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1a8bc3c4a-54b4-4b87-a86a-55191d95cc53.png"><img loading="lazy" src="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1a8bc3c4a-54b4-4b87-a86a-55191d95cc53.png" alt="Misty forest"/><div class="overlay"><span>Ancient Forest</span></div></div>
+      <div class="gallery-item" data-img="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/10618bbe3-16bf-4b9a-8ee9-7c54ce1a855c.png"><img loading="lazy" src="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/10618bbe3-16bf-4b9a-8ee9-7c54ce1a855c.png" alt="Mountain peaks"/><div class="overlay"><span>Majestic Peaks</span></div></div>
+      <div class="gallery-item" data-img="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1554553f9-7d22-475f-9397-d4fa21bd752d.png"><img loading="lazy" src="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1554553f9-7d22-475f-9397-d4fa21bd752d.png" alt="Crystal river"/><div class="overlay"><span>Crystal River</span></div></div>
+      <div class="gallery-item" data-img="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1d679c852-f8af-41b4-ac92-0c69c06ebe31.png"><img loading="lazy" src="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1d679c852-f8af-41b4-ac92-0c69c06ebe31.png" alt="Wildlife tiger"/><div class="overlay"><span>Wildlife Wonder</span></div></div>
+      <div class="gallery-item" data-img="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1cde0e040-092f-46f5-b9c8-1c53f8bc927b.png"><img loading="lazy" src="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1cde0e040-092f-46f5-b9c8-1c53f8bc927b.png" alt="Tree plantation"/><div class="overlay"><span>Hope in Soil</span></div></div>
+      <div class="gallery-item" data-img="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1a61d978d-d0c1-4ff0-afbf-1ecf806f1261.png"><img loading="lazy" src="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1a61d978d-d0c1-4ff0-afbf-1ecf806f1261.png" alt="Pristine beach"/><div class="overlay"><span>Pristine Coast</span></div></div>
+      <div class="gallery-item" data-img="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/198daabda-be3a-4caf-8ae9-f39a6f63f6c9.png"><img loading="lazy" src="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/198daabda-be3a-4caf-8ae9-f39a6f63f6c9.png" alt="Renewable energy"/><div class="overlay"><span>Clean Energy</span></div></div>
+      <div class="gallery-item" data-img="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1bbe3492b-079d-4ccd-8b65-dc4f0fbec74d.png"><img loading="lazy" src="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1bbe3492b-079d-4ccd-8b65-dc4f0fbec74d.png" alt="Water conservation"/><div class="overlay"><span>Pure Water</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+  <img id="lightboxImg" alt=""/>
+</div>
+
+<!-- SOLUTIONS -->
+<section id="solutions">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Our Solutions</span>
+      <h2>Practical Ways to Heal the Earth</h2>
+      <p>Every action counts. Here are four powerful, scalable strategies driving real environmental change across the world.</p>
+    </div>
+    <div class="solutions-grid">
+      <article class="solution-card reveal">
+        <span class="solution-num">01</span>
+        <img class="s-img" loading="lazy" src="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1cde0e040-092f-46f5-b9c8-1c53f8bc927b.png" alt="Tree plantation volunteers"/>
+        <h3>Tree Plantation</h3>
+        <p>Restoring forests one sapling at a time — capturing carbon, restoring habitats, and cooling the planet.</p>
+      </article>
+      <article class="solution-card reveal delay-1">
+        <span class="solution-num">02</span>
+        <img class="s-img" loading="lazy" src="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1b375f02a-f31d-4a5a-8cae-858fadfbfc39.png" alt="Recycling waste"/>
+        <h3>Recycling</h3>
+        <p>Turning waste into resources. Reducing landfill, saving energy, and giving materials a second life.</p>
+      </article>
+      <article class="solution-card reveal delay-2">
+        <span class="solution-num">03</span>
+        <img class="s-img" loading="lazy" src="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/198daabda-be3a-4caf-8ae9-f39a6f63f6c9.png" alt="Renewable energy turbines"/>
+        <h3>Renewable Energy</h3>
+        <p>Solar, wind, and hydro power — clean, limitless energy that cuts emissions and builds resilience.</p>
+      </article>
+      <article class="solution-card reveal delay-3">
+        <span class="solution-num">04</span>
+        <img class="s-img" loading="lazy" src="https://image.qwenlm.ai/public_source/36ce5fca-ca03-4e8d-9d08-77bb79018eff/1bbe3492b-079d-4ccd-8b65-dc4f0fbec74d.png" alt="Water conservation"/>
+        <h3>Water Conservation</h3>
+        <p>Rainwater harvesting, smart irrigation, and protecting watersheds — safeguarding every drop.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Our Impact</span>
+      <h2>Numbers That Tell Our Story</h2>
+      <p>Real progress driven by real people. Here's the measurable change we've created together.</p>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <span class="stat-num" data-target="1250000" data-suffix="+">0</span>
+        <p>Trees Planted</p>
+      </div>
+      <div class="stat-item reveal delay-1">
+        <span class="stat-num" data-target="480" data-suffix="T">0</span>
+        <p>Tons of Plastic Reduced</p>
+      </div>
+      <div class="stat-item reveal delay-2">
+        <span class="stat-num" data-target="85000" data-suffix="+">0</span>
+        <p>Volunteers Joined</p>
+      </div>
+      <div class="stat-item reveal delay-3">
+        <span class="stat-num" data-target="92" data-suffix="%">0</span>
+        <p>Clean Energy Adopted</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TAKE ACTION -->
+<section id="action">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Take Action</span>
+      <h2>Daily Eco-Friendly Habits</h2>
+      <p>Small changes, massive impact. Start today with these simple habits that protect our planet every single day.</p>
+    </div>
+    <div class="action-grid">
+      <div class="action-card reveal"><div class="action-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div><div><h4>Carry Reusable Bags</h4><p>Skip plastic bags and use cloth ones every shopping trip.</p></div></div>
+      <div class="action-card reveal delay-1"><div class="action-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div><div><h4>Drink Tap Water</h4><p>Use a refillable bottle and cut out single-use plastic.</p></div></div>
+      <div class="action-card reveal delay-2"><div class="action-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg></div><div><h4>Use Solar Power</h4><p>Switch to solar lamps and renewable energy wherever possible.</p></div></div>
+      <div class="action-card reveal delay-3"><div class="action-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 0 0 6.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 0 0 6.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 14V5"/></svg></div><div><h4>Compost Food Waste</h4><p>Turn scraps into rich soil instead of sending them to landfills.</p></div></div>
+      <div class="action-card reveal"><div class="action-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><div><h4>Conserve Electricity</h4><p>Turn off unused lights and unplug chargers when not in use.</p></div></div>
+      <div class="action-card reveal delay-1"><div class="action-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></div><div><h4>Walk or Cycle</h4><p>Choose human-powered transport for short trips to reduce emissions.</p></div></div>
+      <div class="action-card reveal delay-2"><div class="action-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div><div><h4>Support Local</h4><p>Buy local, seasonal produce to cut food miles and support farmers.</p></div></div>
+      <div class="action-card reveal delay-3"><div class="action-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><div><h4>Spread Awareness</h4><p>Share knowledge and inspire others to join the green movement.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Testimonials</span>
+      <h2>Voices from the Movement</h2>
+      <p>Real stories from volunteers, partners, and eco-warriors who are making a difference every day.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <span class="quote-mark">"</span>
+        <p>VerdantEarth changed how I see my relationship with nature. Planting my first tree with them felt like planting hope itself.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">AM</div>
+          <div><h4>Amara Mbeki</h4><span>Volunteer, Kenya</span></div>
+        </div>
+      </div>
+      <div class="testi-card reveal delay-1">
+        <span class="quote-mark">"</span>
+        <p>Their beach cleanup initiative inspired our entire company. Now we run monthly zero-waste campaigns across three cities.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">LC</div>
+          <div><h4>Lukas Chen</h4><span>CEO, EcoStart Inc.</span></div>
+        </div>
+      </div>
+      <div class="testi-card reveal delay-2">
+        <span class="quote-mark">"</span>
+        <p>As a teacher, I bring their educational materials to my classroom. The next generation is learning to love the planet early.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">SP</div>
+          <div><h4>Sofia Pereira</h4><span>Educator, Portugal</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">FAQ</span>
+      <h2>Questions, Answered</h2>
+      <p>Everything you want to know about our mission, programs, and how you can get involved.</p>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item reveal">
+        <button class="faq-q">How can I become a volunteer? <span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Simply fill out our contact form and select "Volunteer" as your interest. Our team will reach out within 48 hours with opportunities in your area — from tree planting events to educational workshops.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Where does my donation go? <span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">92% of all donations go directly to on-ground conservation — tree planting, wildlife protection, and community education. The remaining 8% covers essential operational costs. We publish full transparency reports quarterly.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Can my company partner with VerdantEarth? <span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Absolutely! We offer corporate partnership programs including employee volunteering days, carbon offset initiatives, and co-branded sustainability campaigns. Reach out via our contact form for details.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Do you run educational programs for schools? <span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes — we have a dedicated EcoSchools program with curriculum resources, classroom visits, and hands-on projects for students aged 6 to 18. All materials are free for public schools.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">How do you measure environmental impact? <span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">We track metrics including trees planted and survival rate, CO₂ captured, plastic removed (in tons), biodiversity indices, and community reach. Every project has a publicly accessible impact dashboard.</div></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Can I plant a tree in someone's name? <span class="plus" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button>
+        <div class="faq-a"><div class="faq-a-inner">Yes! Our Gift-a-Tree program lets you dedicate a tree (or a grove) in someone's honor. Recipients receive a digital certificate with GPS coordinates and yearly growth updates.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Get In Touch</span>
+      <h2>Let's Shape the Future Together</h2>
+      <p>Questions, partnerships, or just want to say hello? We'd love to hear from you.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>Reach Out Anytime</h3>
+        <p>Our team responds within 24 hours on business days. Join thousands already making a difference.</p>
+        <div class="contact-item">
+          <div class="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><strong>Headquarters</strong><span>128 Green Valley Rd, Portland, OR</span></div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+          <div><strong>Email Us</strong><span>hello@verdantearth.org</span></div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+          <div><strong>Call Us</strong><span>+1 (503) 555-0142</span></div>
+        </div>
+      </div>
+      <form class="contact-form reveal delay-1" id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="field" id="fnameField">
+            <label for="fname">Full Name</label>
+            <input type="text" id="fname" name="fname" placeholder="Jane Doe" required/>
+            <span class="error-msg"></span>
+          </div>
+          <div class="field" id="emailField">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="jane@example.com" required/>
+            <span class="error-msg"></span>
+          </div>
+        </div>
+        <div class="field" id="subjectField" style="margin-bottom:18px;">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" placeholder="How can we help?" required/>
+          <span class="error-msg"></span>
+        </div>
+        <div class="field" id="messageField" style="margin-bottom:18px;">
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" placeholder="Tell us your thoughts..." required></textarea>
+          <span class="error-msg"></span>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center;">
+          <span>Send Message
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+          </span>
+        </button>
+        <div class="form-success" id="formSuccess">✓ Thank you! Your message has been sent. We'll reply within 24 hours.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col footer-brand">
+        <a href="#home" class="logo">
+          <span class="logo-mark"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19.2 2.5c.5 3 .7 5 0 7s-2 4-4.2 4.5c0 2 1 3.5 2 4.5"/><path d="M2 21c0-3 1.85-4.1 3.13-5"/></svg></span>
+          VerdantEarth
+        </a>
+        <p>A global movement dedicated to preserving nature, protecting wildlife, and building a sustainable future for generations to come.</p>
+        <div class="socials">
+          <a href="#" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg></a>
+          <a href="#" aria-label="Twitter"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z"/></svg></a>
+          <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31.4 31.4 0 0 0 0 12a31.4 31.4 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31.4 31.4 0 0 0 24 12a31.4 31.4 0 0 0-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Explore</h5>
+        <ul>
+          <li><a href="#about">About Nature</a></li>
+          <li><a href="#problems">Environmental Issues</a></li>
+          <li><a href="#gallery">Photo Gallery</a></li>
+          <li><a href="#solutions">Our Solutions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Get Involved</h5>
+        <ul>
+          <li><a href="#contact">Become a Volunteer</a></li>
+          <li><a href="#contact">Donate</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#action">Daily Habits</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Contact</h5>
+        <ul>
+          <li>128 Green Valley Rd</li>
+          <li>Portland, OR, USA</li>
+          <li>hello@verdantearth.org</li>
+          <li>+1 (503) 555-0142</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-quote">"The Earth does not belong to us — we belong to the Earth."</p>
+      <p class="footer-copy">© 2026 VerdantEarth Conservation. Crafted with 🌱 for a greener planet.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- BACK TO TOP -->
+<button class="to-top" id="toTop" aria-label="Back to top">
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<script>
+  /* ========== NAV SCROLL ========== */
+  const nav = document.getElementById('nav');
+  const toTop = document.getElementById('toTop');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 40);
+    toTop.classList.toggle('show', y > 600);
+  });
+
+  /* ========== MOBILE MENU ========== */
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    const open = navLinks.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', open);
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  }));
+
+  /* ========== THEME TOGGLE ========== */
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+  const savedTheme = localStorage.getItem('ve-theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  updateThemeIcon(savedTheme);
+  themeToggle.addEventListener('click', () => {
+    const current = document.documentElement.getAttribute('data-theme');
+    const next = current === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next);
+    localStorage.setItem('ve-theme', next);
+    updateThemeIcon(next);
+  });
+  function updateThemeIcon(theme) {
+    themeIcon.innerHTML = theme === 'dark'
+      ? '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>'
+      : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+  }
+
+  /* ========== SCROLL REVEAL ========== */
+  const revealItems = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  revealItems.forEach(el => revealObserver.observe(el));
+
+  /* ========== ANIMATED COUNTERS ========== */
+  const counters = document.querySelectorAll('.stat-num');
+  const formatNum = (n) => {
+    if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+    if (n >= 1000) return (n / 1000).toFixed(n >= 10000 ? 0 : 1).replace(/\.0$/, '') + 'K';
+    return n.toString();
+  };
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseInt(el.dataset.target, 10);
+        const suffix = el.dataset.suffix || '';
+        const duration = 2200;
+        const start = performance.now();
+        const animate = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          const value = Math.floor(target * eased);
+          el.textContent = formatNum(value) + suffix;
+          if (progress < 1) requestAnimationFrame(animate);
+          else el.textContent = formatNum(target) + suffix;
+        };
+        requestAnimationFrame(animate);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => counterObserver.observe(c));
+
+  /* ========== FAQ ACCORDION ========== */
+  document.querySelectorAll('.faq-item').forEach(item => {
+    const q = item.querySelector('.faq-q');
+    const a = item.querySelector('.faq-a');
+    q.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(o => {
+        o.classList.remove('open');
+        o.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        a.style.maxHeight = a.scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* ========== GALLERY LIGHTBOX ========== */
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+  document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+      lightboxImg.src = item.dataset.img;
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+  });
+  const closeLightbox = () => {
+    lightbox.classList.remove('active');
+    document.body.style.overflow = '';
+  };
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+  /* ========== FORM VALIDATION ========== */
+  const form = document.getElementById('contactForm');
+  const successMsg = document.getElementById('formSuccess');
+  const validateField = (id, msg, check) => {
+    const field = document.getElementById(id + 'Field');
+    const input = document.getElementById(id);
+    const err = field.querySelector('.error-msg');
+    const valid = check(input.value.trim());
+    field.classList.toggle('error', !valid);
+    err.textContent = valid ? '' : msg;
+    return valid;
+  };
+  ['fname', 'email', 'subject', 'message'].forEach(id => {
+    const input = document.getElementById(id);
+    input.addEventListener('input', () => {
+      const field = document.getElementById(id + 'Field');
+      if (field.classList.contains('error')) {
+        field.classList.remove('error');
+        field.querySelector('.error-msg').textContent = '';
+      }
+    });
+  });
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const v1 = validateField('fname', 'Please enter your name', v => v.length >= 2);
+    const v2 = validateField('email', 'Please enter a valid email', v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v));
+    const v3 = validateField('subject', 'Please enter a subject', v => v.length >= 3);
+    const v4 = validateField('message', 'Please enter a message (min 10 chars)', v => v.length >= 10);
+    if (v1 && v2 && v3 && v4) {
+      successMsg.classList.add('show');
+      form.reset();
+      setTimeout(() => successMsg.classList.remove('show'), 5000);
+    }
+  });
+
+  /* ========== BACK TO TOP ========== */
+  toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+</body>
+</html>
+
